@@ -229,7 +229,7 @@ WITH PubSales AS (
         b.category,
         SUM(s.quantity * b.price_per_unit) AS category_sales
     FROM
-        pubs p
+        pubs p 
     JOIN
         sales s ON p.pub_id = s.pub_id
     JOIN
@@ -237,7 +237,6 @@ WITH PubSales AS (
     GROUP BY
         p.pub_id, p.pub_name, b.category
 )
-
 SELECT
     ps.pub_id,
     ps.pub_name,
