@@ -1,3 +1,5 @@
+/*Create Tables and Rows*/
+
 create table pubs
 ( pub_id int primary key,
   pub_name varchar(50),
@@ -82,6 +84,8 @@ create table sales
 (20, 3, 5, 5, '2023-05-13');
 
 
+/*Questions*/
+
 /*1. How many pubs are located in each country??*/
 
 select country,count(pub_id)
@@ -108,16 +112,7 @@ GROUP BY p.pub_id,p.pub_name
 ORDER BY avg_rating DESC
 LIMIT 1;       
 
-
 /*4. What are the top 5 beverages by sales quantity across all pubs?*/
-
-select (b.bev_id) as Beverage_ID,sum(s.Quantity) as Sales_Quantity
-from sales s 
-join beverages b 
-using(bev_id)
-join pubs p 
-using(pub_id)
-group by b.bev_id;
 
 WITH cte1 AS (
     SELECT b.bev_id AS Beverage_ID, SUM(s.Quantity) AS Sales_Quantity
